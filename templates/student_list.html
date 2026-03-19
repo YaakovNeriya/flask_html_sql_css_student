@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student list</title>
+    <link rel="stylesheet" href="/static/student_list.css"/>
+</head>
+<body>
+    <h1>Student list</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Profile</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for student in data: %}
+            <tr>
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.age}}</td>
+                <td><a href="/student_profile/{{student.id}}">Go To Profle</a></td>
+                <td>
+                    <form action="/edit_student" method="GET">
+                        <input type="submit" value="Edit"/>
+                        <input type="hidden" value="{{student.id}}" name="edit_id"/>
+                    </form>
+                </td>
+                <td>
+                    <form action="/student_list" method="POST">
+                        <input type="submit" value="Delete"/>
+                        <input type="hidden" value="{{student.id}}" name="delete_id"/>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/add_student">Add student</a>
+</body>
+</html>

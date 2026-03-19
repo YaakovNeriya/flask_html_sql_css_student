@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/student_list" method="POST">
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td><input type="text" placeholder="Enter name..." name="student_name" value="{{name}}"></td>
+            </tr>
+            <tr>
+                <th>Age:</th>
+                <td><input type="number" min="0" max="120" name="student_age" value="{{age}}"></td>
+            </tr>
+        </table>
+        {% if id: %}
+            <input type="hidden" value="{{id}}" name="edit_id">
+        {% endif %}
+        <input type="submit">
+    </form>
+    <a href="/student_list">Cancel</a>
+</body>
+</html>
